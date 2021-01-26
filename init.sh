@@ -28,11 +28,11 @@ RABBITMQ_ALIAS=rabbitmq
 BIOFORMAT_ALIAS=bioformat
 CORE_ALIAS=core
 IMS_ALIAS=ims
-IMS_PORT=8080
+IMS_PORT=9191
 WEB_UI_ALIAS=webUI
-WEB_UI_PORT=80
+WEB_UI_PORT=9180
 HMS_ALIAS=hms
-HMS_PORT=8080
+HMS_PORT=9191
 
 if [[ $CORE_DEVELOPMENT = true ]]; then
     POSTGRES_ALIAS=localhost
@@ -114,10 +114,10 @@ for i in ${FILES[@]}; do
                 sed -i "/--link ${INSTANCE_PREFIX}core:core/d" $i
             else
                 sed -i "/-p 5672:5672 -p 15672:15672/d" $i
-                sed -i "/-p 5432:5432/d" $i
+                sed -i "/-p 9132:9132/d" $i
                 sed -i "/-p 27017:27017 -p 28017:28017/d" $i
                 sed -i "/-p 10022:22/d" $i
-                sed -i "/-p 22/d" $i
+                sed -i "/-p 9022/d" $i
             fi
 
             # Remove bindings to container IMS for ims development
@@ -176,7 +176,7 @@ for i in ${FILES[@]}; do
                 sed -i '' -e "/--link ${INSTANCE_PREFIX}core:core/d" $i
             else
                 sed -i '' -e "/-p 5672:5672 -p 15672:15672/d" $i
-                sed -i '' -e "/-p 5432:5432/d" $i
+                sed -i '' -e "/-p 9132:9132/d" $i
                 sed -i '' -e "/-p 27017:27017 -p 28017:28017/d" $i
                 sed -i '' -e "/-p 10022:22/d" $i
                 sed -i '' -e "/-p 22/d" $i

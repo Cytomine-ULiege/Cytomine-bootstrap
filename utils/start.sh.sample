@@ -90,7 +90,7 @@ fi
 # ----- POSTGRESQL ------
 docker volume create --name $POSTGRESQL_VOLUME > /dev/null
 docker create --name ${INSTANCE_PREFIX}postgresql \
--p 5432:5432 \
+-p 9132:9132 \
 -v $POSTGRESQL_VOLUME:/var/lib/postgresql/data \
 -e PGDATA=/var/lib/postgresql/data/db-files/ \
 --restart=unless-stopped \
