@@ -26,8 +26,8 @@
 #------------------------------------------------------------------------------
 # CORE
 #------------------------------------------------------------------------------
-UI_URL=localhost-core
-CORE_URL=localhost-core
+UI_URL=cytomine-snuhpia.ddns.net
+CORE_URL=cytomine-snuhpia.ddns.net
 SENDER_EMAIL_SMTP_HOST='smtp.gmail.com'
 SENDER_EMAIL_SMTP_PORT='587'
 SENDER_EMAIL_PASS='passwd'
@@ -43,8 +43,8 @@ WEB_UI_DEVELOPMENT=false
 #------------------------------------------------------------------------------
 # IMS
 #------------------------------------------------------------------------------
-IMS_URL=localhost-ims
-UPLOAD_URL=localhost-upload
+IMS_URL=cytomineims-b1.ddns.net
+UPLOAD_URL=cytomineupload-b1.ddns.net
 
 IMS_STORAGE_PATH=/data/images
 IMS_BUFFER_PATH=/tmp/uploaded
@@ -114,7 +114,7 @@ IRIS_VOLUME=iris_data
 #------------------------------------------------------------------------------
 # PLUGIN: SOFTWARE
 #------------------------------------------------------------------------------
-SOFTWARE_ENABLED=true
+SOFTWARE_ENABLED=false
 SOFTWARE_CODE_PATH=/data/softwares/code
 SOFTWARE_DOCKER_IMAGES_PATH=/data/softwares/images
 JOBS_PATH=/data/jobs
@@ -147,5 +147,5 @@ CERTIFICATE_PATH=/data/certificates
 # - ${IRIS_URL}-key.pem - only if $IRIS_ENABLED = true
 
 INSTANCE_PREFIX=""
-HTTP_NGINX_PORT=80
-HTTPS_NGINX_PORT=443
+HTTP_NGINX_PORT=9180
+HTTPS_NGINX_PORT=9143
