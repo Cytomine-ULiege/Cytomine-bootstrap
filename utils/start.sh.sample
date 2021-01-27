@@ -56,11 +56,12 @@ echo ""
 
 # Create server SSH keys if needed
 SERVER_SSHKEYS_FILE="$SERVER_SSHKEYS_PATH/id_rsa"
+mkdir -p $SERVER_SSHKEYS_PATH
 if [ ! -e $SERVER_SSHKEYS_FILE ]
 then
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        apt-get install -y ssh-keygen
-    fi
+    #if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    #    apt-get install -y ssh-keygen
+    #fi
     ssh-keygen -t rsa -N "" -C $CORE_URL -f $SERVER_SSHKEYS_FILE
 fi
 
