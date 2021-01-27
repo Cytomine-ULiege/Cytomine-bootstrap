@@ -1,4 +1,4 @@
-dataSource.url='jdbc:postgresql://$POSTGRES_ALIAS:5432/docker'
+dataSource.url='jdbc:postgresql://$POSTGRES_ALIAS:9132/docker'
 dataSource.username='docker'
 dataSource.password='docker'
 

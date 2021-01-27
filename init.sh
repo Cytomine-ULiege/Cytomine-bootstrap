@@ -116,7 +116,7 @@ for i in ${FILES[@]}; do
                 sed -i "/-p 5672:5672 -p 15672:15672/d" $i
                 sed -i "/-p 9132:9132/d" $i
                 sed -i "/-p 27017:27017 -p 28017:28017/d" $i
-                sed -i "/-p 10022:22/d" $i
+                sed -i "/-p 10022:9022/d" $i
                 sed -i "/-p 9022/d" $i
             fi
 
@@ -144,7 +144,7 @@ for i in ${FILES[@]}; do
             # Remove ssl in nginx config if http is used as protocol
             if [[ $HTTP_PROTOCOL == "http" || $HTTP_PROXY = true ]]; then
                 sed -i "/ssl_/d" $i;
-                sed -i "/443 ssl/d" $i;
+                sed -i "/9143 ssl/d" $i;
                 sed -i "/-v ${CERTIFICATE_PATH//\//\\/}:\/certificates/d" $i;
             fi
 
@@ -178,8 +178,8 @@ for i in ${FILES[@]}; do
                 sed -i '' -e "/-p 5672:5672 -p 15672:15672/d" $i
                 sed -i '' -e "/-p 9132:9132/d" $i
                 sed -i '' -e "/-p 27017:27017 -p 28017:28017/d" $i
-                sed -i '' -e "/-p 10022:22/d" $i
-                sed -i '' -e "/-p 22/d" $i
+                sed -i '' -e "/-p 10022:9022/d" $i
+                sed -i '' -e "/-p 9022/d" $i
             fi
 
             # Remove bindings to container IMS for ims development
@@ -206,7 +206,7 @@ for i in ${FILES[@]}; do
             # Remove ssl in nginx config if http is used as protocol
             if [[ $HTTP_PROTOCOL == "http" || $HTTP_PROXY = true ]]; then
                 sed -i '' -e "/ssl_/d" $i;
-                sed -i '' -e "/443 ssl/d" $i;
+                sed -i '' -e "/9143 ssl/d" $i;
                 sed -i '' -e "/-v ${CERTIFICATE_PATH//\//\\/}:\/certificates/d" $i;
             fi
 
