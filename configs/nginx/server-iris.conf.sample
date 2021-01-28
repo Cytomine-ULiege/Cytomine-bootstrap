@@ -1,13 +1,13 @@
 server {
     client_max_body_size 0;
-    listen       9180;
-    listen 9143 ssl http2;
+    listen       80;
+    listen 443 ssl http2;
     server_name  $IRIS_URL;
 
     ssl_certificate /certificates/$IRIS_URL.pem;
     ssl_certificate_key /certificates/$IRIS_URL-key.pem;
 
     location / {
-        proxy_pass http://iris:9180;
+        proxy_pass http://iris:80;
     }
 }

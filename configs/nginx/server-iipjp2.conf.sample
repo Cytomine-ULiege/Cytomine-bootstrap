@@ -1,8 +1,8 @@
 server {
-    listen       9180;
+    listen       80;
     server_name  $IIP_JP2_URL;
 
     location / {
-        proxy_pass http://iipJP2:9180;
+        proxy_pass http://iipJP2:80;
     }
 }

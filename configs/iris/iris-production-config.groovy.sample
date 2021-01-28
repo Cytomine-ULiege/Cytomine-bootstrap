@@ -30,7 +30,7 @@ grails.logging.jul.usebridge = false
 // the host name, port and protocol of the machine you are running IRIS on
 grails.host = "$IRIS_URL"
 // if standard ports are used, leave grails.port empty
-grails.port = ""
+grails.port = "10080"
 // either http or https
 grails.protocol = "http"
 // automatically assembling the server URL

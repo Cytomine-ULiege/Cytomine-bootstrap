@@ -1,5 +1,5 @@
 server {
-    listen       9180;
+    listen       80;
     server_name  $HMS_URL;
 
     location / {

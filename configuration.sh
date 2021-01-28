@@ -93,7 +93,7 @@ HMS_URL=localhost-hms
 #------------------------------------------------------------------------------
 # PLUGIN: IIP-JP2 (JPEG 2000 native support)
 #------------------------------------------------------------------------------
-IIP_JP2_ENABLED=true
+IIP_JP2_ENABLED=false
 
 # Advanced configuration.
 IIP_JP2_URL=localhost-iip-jp2000

@@ -3,12 +3,12 @@ upstream backend-ims {
 }
 
 upstream backend-iip {
-    server iipCyto:9180;
+    server iipCyto:80;
 }
 
 server {
-    listen 9180;
-    listen 9143 ssl http2;
+    listen 80;
+    listen 443 ssl http2;
     server_name $IMS_URL;
 
     ssl_certificate /certificates/$IMS_URL.pem;
@@ -68,8 +68,8 @@ server {
 }
 
 server {
-    listen 9180;
-    listen 9143 ssl http2;
+    listen 80;
+    listen 443 ssl http2;
     server_name  $UPLOAD_URL;
 
     ssl_certificate /certificates/$UPLOAD_URL.pem;
@@ -119,7 +119,7 @@ server {
 }
 
 server {
-    listen 9180;
+    listen 80;
     server_name  $IIP_CYTO_URL;
 
     location / {

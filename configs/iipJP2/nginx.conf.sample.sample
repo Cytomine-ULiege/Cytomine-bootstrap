@@ -20,7 +20,7 @@ IIP_PROCESS
 	}
 
 	server {
-        listen 9180;
+        listen 80;
 		server_name iip_jp2000;
         location /fcgi-bin/iipsrv.fcgi {
             add_header Access-Control-Allow-Origin *;

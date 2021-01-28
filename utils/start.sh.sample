@@ -91,7 +91,7 @@ fi
 # ----- POSTGRESQL ------
 docker volume create --name $POSTGRESQL_VOLUME > /dev/null
 docker create --name ${INSTANCE_PREFIX}postgresql \
--p 9132:9132 \
+-p 5432:5432 \
 -v $POSTGRESQL_VOLUME:/var/lib/postgresql/data \
 -e PGDATA=/var/lib/postgresql/data/db-files/ \
 --restart=unless-stopped \
@@ -303,8 +303,8 @@ docker create --name ${INSTANCE_PREFIX}nginx \
 --link ${INSTANCE_PREFIX}hms:hms \
 -v $IMS_BUFFER_PATH:/tmp/uploaded \
 -v $CERTIFICATE_PATH:/certificates \
--p $HTTP_NGINX_PORT:9180 \
--p $HTTPS_NGINX_PORT:9143 \
+-p $HTTP_NGINX_PORT:80 \
+-p $HTTPS_NGINX_PORT:443 \
 --restart=unless-stopped \
 $NGINX_NAMESPACE/nginx:$NGINX_VERSION > /dev/null
 
@@ -330,7 +330,7 @@ then
     -v $SERVER_SSHKEYS_PATH:$SERVER_SSHKEYS_PATH \
     -v $SOFTWARE_DOCKER_IMAGES_PATH:$SOFTWARE_DOCKER_IMAGES_PATH \
     -e SERVER_SSHKEYS_FILE=$SERVER_SSHKEYS_FILE \
-    -p 10022:9022 \
+    -p 10022:22 \
     --restart=unless-stopped \
     $SLURM_NAMESPACE/slurm:$SLURM_VERSION > /dev/null
 
@@ -350,7 +350,7 @@ then
     -v $JOBS_PATH:$JOBS_PATH \
     -v $SERVER_SSHKEYS_PATH:$SERVER_SSHKEYS_PATH \
     --restart=unless-stopped \
-    -p 9022 \
+    -p 22 \
     $SOFTWAREROUTER_NAMESPACE/software_router:$SOFTWAREROUTER_VERSION > /dev/null
 
     docker cp "${PWD}/hosts/software_router/addHosts.sh" ${INSTANCE_PREFIX}software_router:/tmp/addHosts.sh
