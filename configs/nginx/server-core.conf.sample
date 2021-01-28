@@ -1,5 +1,5 @@
 upstream backend-core {
-    server $CORE_ALIAS:80;
+    server $CORE_ALIAS:8080;
 }
 
 upstream web-ui {

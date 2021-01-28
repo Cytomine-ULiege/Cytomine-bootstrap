@@ -8,6 +8,6 @@ server {
     ssl_certificate_key /certificates/$IRIS_URL-key.pem;
 
     location / {
-        proxy_pass http://iris:80;
+        proxy_pass http://iris:8080;
     }
 }
