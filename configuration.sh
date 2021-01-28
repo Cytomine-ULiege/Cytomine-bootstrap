@@ -114,7 +114,7 @@ IRIS_VOLUME=iris_data
 #------------------------------------------------------------------------------
 # PLUGIN: SOFTWARE
 #------------------------------------------------------------------------------
-SOFTWARE_ENABLED=false
+SOFTWARE_ENABLED=true
 SOFTWARE_CODE_PATH=/data/softwares/code
 SOFTWARE_DOCKER_IMAGES_PATH=/data/softwares/images
 JOBS_PATH=/data/jobs
