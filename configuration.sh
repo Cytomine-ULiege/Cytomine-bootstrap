@@ -147,5 +147,6 @@ CERTIFICATE_PATH=/data/certificates
 # - ${IRIS_URL}-key.pem - only if $IRIS_ENABLED = true
 
 INSTANCE_PREFIX=""
+CUSTOM_PORT=10080      # port for entering b1 server
 HTTP_NGINX_PORT=10080  # Must match the port appended to cytomine-* URLs
 HTTPS_NGINX_PORT=9143  # docker

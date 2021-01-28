@@ -2,8 +2,6 @@ dataSource.url='jdbc:postgresql://$POSTGRES_ALIAS:5432/docker'
 dataSource.username='docker'
 dataSource.password='docker'
 
-custom.http.port = ':10080'
-
 grails.admin.client='info@cytomine.be'
 
 cytomine.customUI.global = [
@@ -20,12 +18,12 @@ cytomine.customUI.global = [
         software : ["ROLE_USER", "ROLE_ADMIN"]
 ]
 
-grails.UIURL='$HTTP_PROTOCOL://$UI_URL' + ":10080"
-grails.serverURL='$HTTP_PROTOCOL://$CORE_URL' + ":10080"
-grails.imageServerURL=['$HTTP_PROTOCOL://$IMS_URL' + ":10080"]
-grails.retrievalServerURL =['http://$RETRIEVAL_URL' + ":10080"]
-grails.uploadURL='$HTTP_PROTOCOL://$UPLOAD_URL' + ":10080"
-grails.hyperspectralServerURL='http://$HMS_URL' + ":10080"
+grails.UIURL='$HTTP_PROTOCOL://$UI_URL:$CUSTOM_PORT'
+grails.serverURL='$HTTP_PROTOCOL://$CORE_URL:$CUSTOM_PORT'
+grails.imageServerURL=['$HTTP_PROTOCOL://$IMS_URL:$CUSTOM_PORT']
+grails.retrievalServerURL =['http://$RETRIEVAL_URL:$CUSTOM_PORT']
+grails.uploadURL='$HTTP_PROTOCOL://$UPLOAD_URL:$CUSTOM_PORT'
+grails.hyperspectralServerURL='http://$HMS_URL:$CUSTOM_PORT'
 
 storage_buffer='$IMS_BUFFER_PATH'
 storage_path='$IMS_STORAGE_PATH'

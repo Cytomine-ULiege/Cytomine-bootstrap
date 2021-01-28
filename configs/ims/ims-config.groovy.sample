@@ -1,8 +1,8 @@
 dataSource.url="jdbc:h2:/tmp/devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 cytomine.ims.charset = "UTF-8"
 
-cytomine.ims.server.url = "$HTTP_PROTOCOL://$IMS_URL" + ":10080"
-cytomine.ims.server.core.url = "$HTTP_PROTOCOL://$CORE_URL" + ":10080"
+cytomine.ims.server.url = "$HTTP_PROTOCOL://$IMS_URL:$CUSTOM_PORT"
+cytomine.ims.server.core.url = "$HTTP_PROTOCOL://$CORE_URL:$CUSTOM_PORT"
 cytomine.ims.server.publicKey = "$IMS_PUB_KEY"
 cytomine.ims.server.privateKey = "$IMS_PRIV_KEY"
 
