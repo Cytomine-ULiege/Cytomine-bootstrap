@@ -282,6 +282,7 @@ fi
 docker create --name ${INSTANCE_PREFIX}nginx \
 --link ${INSTANCE_PREFIX}iris:iris \
 --link ${INSTANCE_PREFIX}ims:ims \
+--link ${INSTANCE_PREFIX}ims-worker:ims-worker \
 --link ${INSTANCE_PREFIX}retrieval:retrieval \
 --link ${INSTANCE_PREFIX}core:core \
 --link ${INSTANCE_PREFIX}webUI:webUI \

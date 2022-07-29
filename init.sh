@@ -113,6 +113,7 @@ for i in ${FILES[@]}; do
             if [[ $BIOFORMAT_ENABLED = false ]]; then sed -i "/--link ${INSTANCE_PREFIX}bioformat:bioformat/d" $i; fi
             if [[ $HMS_ENABLED = false ]]; then sed -i "/--link ${INSTANCE_PREFIX}hms:hms/d" $i; fi
             if [[ $PIMS_CACHE_ENABLED = false ]]; then sed -i "/--link ${INSTANCE_PREFIX}pims-cache:pims-cache/d" $i; fi
+            if [[ $PIMS_TASK_QUEUE_ENABLED = false ]]; then sed -i "/--link ${INSTANCE_PREFIX}ims-worker:ims-worker/d" $i; fi
 
             # Remove bindings to container CORE for core development
             if [[ $CORE_DEVELOPMENT = true ]]; then
@@ -181,6 +182,7 @@ for i in ${FILES[@]}; do
             if [[ $BIOFORMAT_ENABLED = false ]]; then sed -i '' -e "/--link ${INSTANCE_PREFIX}bioformat:bioformat/d" $i; fi
             if [[ $HMS_ENABLED = false ]]; then sed -i '' -e "/--link ${INSTANCE_PREFIX}hms:hms/d" $i; fi
             if [[ $PIMS_CACHE_ENABLED = false ]]; then sed -i '' -e "/--link ${INSTANCE_PREFIX}pims-cache:pims-cache/d" $i; fi
+            if [[ $PIMS_TASK_QUEUE_ENABLED = false ]]; then sed -i '' -e "/--link ${INSTANCE_PREFIX}ims-worker:ims-worker/d" $i; fi
 
             # Remove bindings to container CORE for core development
             if [[ $CORE_DEVELOPMENT = true ]]; then 
