@@ -67,8 +67,9 @@ fi
 docker create --name ${INSTANCE_PREFIX}rabbitmq \
 -p 5672:5672 -p 15672:15672 \
 --hostname rabbitmq \
+-e RABBITMQ_PASS=$RABBITMQ_PASS \
 --restart=unless-stopped \
-rabbitmq:$RABBITMQ_VERSION > /dev/null
+$RABBITMQ_NAMESPACE/rabbitmq:$RABBITMQ_VERSION > /dev/null
 
 docker cp "${PWD}/configs/rabbitmq/rabbitmq.conf" ${INSTANCE_PREFIX}rabbitmq:/etc/rabbitmq/rabbitmq.conf
 docker start ${INSTANCE_PREFIX}rabbitmq
@@ -82,7 +83,7 @@ docker create --name ${INSTANCE_PREFIX}postgresql \
 -v $POSTGRESQL_VOLUME:/var/lib/postgresql/data \
 -e PGDATA=/var/lib/postgresql/data/db-files/ \
 --restart=unless-stopped \
-$POSTGRES_NAMESPACE/postgres:$POSTGRES_VERSION postgres -c 'config_file=/tmp/postgresql.conf' > /dev/null
+$POSTGRES_NAMESPACE/postgis:$POSTGRES_VERSION postgres -c 'config_file=/tmp/postgresql.conf' > /dev/null
 
 docker cp "${PWD}/configs/postgresql/postgresql.conf" ${INSTANCE_PREFIX}postgresql:/tmp/postgresql.conf
 docker start ${INSTANCE_PREFIX}postgresql
@@ -94,8 +95,11 @@ docker run -d \
 -p 27017:27017 -p 28017:28017 \
 --name ${INSTANCE_PREFIX}mongodb \
 -v $MONGODB_VOLUME:/data/db \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin  \
+-e MONGO_INITDB_ROOT_PASSWORD=secret  \
+-e MONGO_INITDB_DATABASE=cytomine  \
 --restart=unless-stopped \
-$MONGODB_NAMESPACE/mongodb:$MONGODB_VERSION > /dev/null
+mongo:$MONGODB_VERSION > /dev/null
 
 
 # ----- BACKUP POSTGRESQL -----
@@ -236,7 +240,8 @@ then
         docker cp "${PWD}/artifacts/restapidoc.json" ${INSTANCE_PREFIX}core:/var/lib/tomcat7/restapidoc.json
     fi
 
-    docker cp "${PWD}/configs/core/cytomineconfig.groovy" ${INSTANCE_PREFIX}core:/usr/share/tomcat7/.grails/cytomineconfig.groovy
+    docker cp "${PWD}/configs/core/application.yml" ${INSTANCE_PREFIX}core:/app/application.yml
+    docker cp "${PWD}/configs/core/logback.xml" ${INSTANCE_PREFIX}core:/app/logback.xml
     docker cp "${PWD}/hosts/core/addHosts.sh" ${INSTANCE_PREFIX}core:/tmp/addHosts.sh
     docker start ${INSTANCE_PREFIX}core
 fi
@@ -247,7 +252,7 @@ then
     docker create --name ${INSTANCE_PREFIX}webUI \
     -v /etc/localtime:/etc/localtime \
     --restart=unless-stopped \
-    $WEB_UI_NAMESPACE/web-ui:$WEB_UI_VERSION > /dev/null
+    $WEB_UI_NAMESPACE/web_ui:$WEB_UI_VERSION > /dev/null
 
     if [ -e "${PWD}/artifacts/web-ui" ]; then
     	docker cp "${PWD}/artifacts/web-ui/." ${INSTANCE_PREFIX}webUI:/app
@@ -277,7 +282,6 @@ fi
 docker create --name ${INSTANCE_PREFIX}nginx \
 --link ${INSTANCE_PREFIX}iris:iris \
 --link ${INSTANCE_PREFIX}ims:ims \
---link ${INSTANCE_PREFIX}ims-worker:ims-worker \
 --link ${INSTANCE_PREFIX}retrieval:retrieval \
 --link ${INSTANCE_PREFIX}core:core \
 --link ${INSTANCE_PREFIX}webUI:webUI \

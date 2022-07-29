@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
-configs/core/cytomineconfig.groovy
+configs/core/application.yml
 configs/ims/pims-config.env
 configs/hms/config.cfg
 configs/iris/iris-config.groovy

@@ -32,12 +32,13 @@ SENDER_EMAIL_SMTP_HOST='smtp.gmail.com'
 SENDER_EMAIL_SMTP_PORT='587'
 SENDER_EMAIL_PASS='passwd'
 SENDER_EMAIL='your.email@gmail.com'
+ADMIN_EMAIL='info@cytomine.coop'
 ATTACHED_FILES_PATH=/data/attached
 
 # Advanced configuration.
 CORE_DEVELOPMENT=false
-POSTGRESQL_VOLUME=db_postgres11
-MONGODB_VOLUME=db_mongo
+POSTGRESQL_VOLUME=db_postgres11_spring
+MONGODB_VOLUME=db_mongo_spring
 
 WEB_UI_DEVELOPMENT=false
 #------------------------------------------------------------------------------
@@ -53,7 +54,7 @@ IMS_BUFFER_PATH=/tmp/uploaded
 IMS_DEVELOPMENT=false
 
 PIMS_CACHE_ENABLED=true
-PIMS_TASK_QUEUE_ENABLED=true
+PIMS_TASK_QUEUE_ENABLED=false
 
 PIMS_WEB_CONCURRENCY=2  # Replace $NB_IIP_PROCESS
 PIMS_WORKER_WEB_CONCURRENCY=1
@@ -114,7 +115,7 @@ SERVER_SSHKEYS_PATH=/data/ssh
 # Advanced configuration.
 RABBITMQ_LOGIN="router"
 RABBITMQ_PASSWORD="router"
-SLURM_VOLUME=slurm_data
+SLURM_VOLUME=slurm_data_spring
 GITHUB_USERNAME=""
 GITHUB_TOKEN=""
 DOCKERHUB_USERNAME=""

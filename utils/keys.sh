@@ -25,6 +25,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     IMS_PUB_KEY=$(cat /proc/sys/kernel/random/uuid)
     IMS_PRIV_KEY=$(cat /proc/sys/kernel/random/uuid)
     SERVER_ID=$(cat /proc/sys/kernel/random/uuid)
+    JAVA_MELODY_PWD=$(cat /proc/sys/kernel/random/uuid)
+    JWT_SECRET_KEY=$(openssl rand -base64 48)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     ADMIN_PWD=$(uuidgen)
     ADMIN_PUB_KEY=$(uuidgen)
@@ -39,4 +41,5 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 KEYS=('ADMIN_PWD' 'ADMIN_PUB_KEY' 'ADMIN_PRIV_KEY' 'SUPERADMIN_PUB_KEY' 'SUPERADMIN_PRIV_KEY'
-'RABBITMQ_PUB_KEY' 'RABBITMQ_PRIV_KEY' 'IMS_PUB_KEY' 'IMS_PRIV_KEY' 'SERVER_ID')
+'RABBITMQ_PUB_KEY' 'RABBITMQ_PRIV_KEY' 'IMS_PUB_KEY' 'IMS_PRIV_KEY' 'SERVER_ID'
+'JAVA_MELODY_PWD' 'JWT_SECRET_KEY')
