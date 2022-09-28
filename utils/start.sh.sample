@@ -67,9 +67,8 @@ fi
 docker create --name ${INSTANCE_PREFIX}rabbitmq \
 -p 5672:5672 -p 15672:15672 \
 --hostname rabbitmq \
--e RABBITMQ_PASS=$RABBITMQ_PASS \
 --restart=unless-stopped \
-$RABBITMQ_NAMESPACE/rabbitmq:$RABBITMQ_VERSION > /dev/null
+rabbitmq:$RABBITMQ_VERSION > /dev/null
 
 docker cp "${PWD}/configs/rabbitmq/rabbitmq.conf" ${INSTANCE_PREFIX}rabbitmq:/etc/rabbitmq/rabbitmq.conf
 docker start ${INSTANCE_PREFIX}rabbitmq
@@ -83,7 +82,7 @@ docker create --name ${INSTANCE_PREFIX}postgresql \
 -v $POSTGRESQL_VOLUME:/var/lib/postgresql/data \
 -e PGDATA=/var/lib/postgresql/data/db-files/ \
 --restart=unless-stopped \
-$POSTGRES_NAMESPACE/postgis:$POSTGRES_VERSION postgres -c 'config_file=/tmp/postgresql.conf' > /dev/null
+$POSTGRES_NAMESPACE/postgres:$POSTGRES_VERSION postgres -c 'config_file=/tmp/postgresql.conf' > /dev/null
 
 docker cp "${PWD}/configs/postgresql/postgresql.conf" ${INSTANCE_PREFIX}postgresql:/tmp/postgresql.conf
 docker start ${INSTANCE_PREFIX}postgresql
@@ -95,11 +94,8 @@ docker run -d \
 -p 27017:27017 -p 28017:28017 \
 --name ${INSTANCE_PREFIX}mongodb \
 -v $MONGODB_VOLUME:/data/db \
--e MONGO_INITDB_ROOT_USERNAME=mongoadmin  \
--e MONGO_INITDB_ROOT_PASSWORD=secret  \
--e MONGO_INITDB_DATABASE=cytomine  \
 --restart=unless-stopped \
-mongo:$MONGODB_VERSION > /dev/null
+$MONGODB_NAMESPACE/mongodb:$MONGODB_VERSION > /dev/null
 
 
 # ----- BACKUP POSTGRESQL -----
