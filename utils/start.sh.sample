@@ -38,7 +38,7 @@ echo "* Container versions *"
 echo "rabbitmq:$RABBITMQ_VERSION"
 echo "$NGINX_NAMESPACE/nginx:$NGINX_VERSION"
 if [[ $CORE_DEVELOPMENT = false ]]; then echo "$CORE_NAMESPACE/core:$CORE_VERSION"; fi
-if [[ $WEB_UI_DEVELOPMENT = false ]]; then echo "$WEB_UI_NAMESPACE/web-ui:$WEB_UI_VERSION"; fi
+if [[ $WEB_UI_DEVELOPMENT = false ]]; then echo "$WEB_UI_NAMESPACE/web_ui:$WEB_UI_VERSION"; fi
 echo "$POSTGRES_NAMESPACE/postgres:$POSTGRES_VERSION"
 echo "$MONGODB_NAMESPACE/mongodb:$MONGODB_VERSION"
 if [[ $BACKUP_ENABLED = true ]]; then echo "$BACKUP_NAMESPACE/backup:$BACKUP_VERSION"; fi
@@ -247,7 +247,7 @@ then
     docker create --name ${INSTANCE_PREFIX}webUI \
     -v /etc/localtime:/etc/localtime \
     --restart=unless-stopped \
-    $WEB_UI_NAMESPACE/web-ui:$WEB_UI_VERSION > /dev/null
+    $WEB_UI_NAMESPACE/web_ui:$WEB_UI_VERSION > /dev/null
 
     if [ -e "${PWD}/artifacts/web-ui" ]; then
     	docker cp "${PWD}/artifacts/web-ui/." ${INSTANCE_PREFIX}webUI:/app
