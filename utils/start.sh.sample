@@ -224,6 +224,8 @@ then
     --link ${INSTANCE_PREFIX}mongodb:mongodb \
     --link ${INSTANCE_PREFIX}rabbitmq:rabbitmq \
     -v $ATTACHED_FILES_PATH:$ATTACHED_FILES_PATH \
+    -v $SOFTWARE_CODE_PATH:$SOFTWARE_CODE_PATH \
+    -v $SOFTWARE_DOCKER_IMAGES_PATH:$SOFTWARE_DOCKER_IMAGES_PATH \
     -v /etc/localtime:/etc/localtime \
     --restart=unless-stopped \
     $CORE_NAMESPACE/core:$CORE_VERSION > /dev/null
@@ -325,6 +327,7 @@ then
     --link ${INSTANCE_PREFIX}rabbitmq:rabbitmq \
     --link ${INSTANCE_PREFIX}slurm:slurm \
     --privileged \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     -v $SOFTWARE_CODE_PATH:$SOFTWARE_CODE_PATH \
     -v $SOFTWARE_DOCKER_IMAGES_PATH:$SOFTWARE_DOCKER_IMAGES_PATH \
     -v $JOBS_PATH:$JOBS_PATH \
@@ -334,7 +337,7 @@ then
     $SOFTWAREROUTER_NAMESPACE/software_router:$SOFTWAREROUTER_VERSION > /dev/null
 
     docker cp "${PWD}/hosts/software_router/addHosts.sh" ${INSTANCE_PREFIX}software_router:/tmp/addHosts.sh
-    docker cp "${PWD}/configs/software_router/config.groovy" ${INSTANCE_PREFIX}software_router:/opt/config.groovy
-    docker cp "${PWD}/configs/software_router/log4j.properties" ${INSTANCE_PREFIX}software_router:/opt/log4j.properties
+    docker cp "${PWD}/configs/software_router/config.groovy" ${INSTANCE_PREFIX}software_router:/software_router/config.groovy
+    docker cp "${PWD}/configs/software_router/log4j.properties" ${INSTANCE_PREFIX}software_router:/software_router/log4j.properties
     docker start ${INSTANCE_PREFIX}software_router
 fi
