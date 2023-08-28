@@ -17,9 +17,7 @@ All Cytomine components run in Docker containers so that the only requirement is
 
 **To install *official* release of Cytomine, see @cytomine. Follow this guide to install forked version by ULiege.** 
 
-Follow the detailed guide to install Cytomine:
-* [Install Cytomine on Linux](https://doc.cytomine.be/display/PubOp/Install+Cytomine+on+Linux)
-* [Install Cytomine on MacOS](https://doc.cytomine.be/display/PubOp/Install+Cytomine+on+MacOS)
+Follow the detailed guide to install Cytomine [Install Community Edition Legacy](https://doc.uliege.cytomine.org/admin-guide/legacy/legacy-install)
 
 Basically,
 1. Fill the `configuration.sh` file
@@ -28,13 +26,12 @@ Basically,
 
 To restart the server, run `bash restart.sh`.
 
-You may be interested in [Cytomine parameter configuration reference](https://doc.cytomine.be/display/PubOp/Cytomine+configuration+reference).
-
 ## Documentation
 
-Full documentation can be found [online](https://doc.cytomine.be).
+Full documentation can be found at [https://doc.uliege.cytomine.org/](https://doc.uliege.cytomine.org/).
 
 ## References
+
 When using our software, we kindly ask you to cite our website url and related publications in all your work (publications, studies, oral presentations,...). In particular, we recommend to cite (Marée et al., Bioinformatics 2016) paper, and to use our logo when appropriate. See our license files for additional details.
 
 - URL: http://www.cytomine.org/
