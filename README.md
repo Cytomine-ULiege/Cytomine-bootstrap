@@ -2,7 +2,6 @@
 
 > Cytomine bootstrap is the installer for Cytomine. The application can run on a server to allow remote users to access the web platform or locally on your own machine.
 
-[![Build Status](https://travis-ci.com/Cytomine-ULiege/Cytomine-bootstrap.svg?branch=master)](https://travis-ci.com/Cytomine-ULiege/Cytomine-bootstrap)
 [![GitHub release](https://img.shields.io/github/release/Cytomine-ULiege/Cytomine-bootstrap.svg)](https://github.com/Cytomine-ULiege/Cytomine-bootstrap/releases)
 [![GitHub](https://img.shields.io/github/license/Cytomine-ULiege/Cytomine-bootstrap.svg)](https://github.com/Cytomine-ULiege/Cytomine-bootstrap/blob/master/LICENSE)
 
